@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css">
+  <title>Login - Painel Administrativo</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f8f0f6;
+      font-family: Arial, sans-serif;
+    }
+
+    .login-container {
+      width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .login-container h1 {
+      margin-bottom: 20px;
+      color: #522e38;
+      font-size: 24px;
+    }
+
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .login-container label {
+      text-align: left;
+      color: #522e38;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .login-container input[type="text"]:focus,
+    .login-container input[type="password"]:focus {
+      outline: none;
+      border-color: #e91e63;
+    }
+
+    .login-container button {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #d81b60;
+    }
+
+    .login-container .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+      border-radius: 10px;
+    }
+    @media (max-width: 768px) {
+      body {
+        padding: 10px; /* Adiciona espaçamento em telas pequenas */
+      }
+
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <img class="logo" src="login/src/img/natalia-log.png" alt="">
+    <h1>Login</h1>
+    <form id="loginForm" method="POST" action="login/processa_login.php" onsubmit="return processLogin(event)">
+      <div id="errorMessage" style="color: red; margin-bottom: 10px; display: none;"></div> <!-- Área para mensagens -->
+
+      <label for="usuario">E-mail ou CPF:</label>
+      <input type="text" id="usuario" name="usuario" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <div class="footer">
+      © 2024 Espaço Natália Letis. Todos os direitos reservados.
+    </div>
+  </div>
+</body>
+<script>
+  function processLogin(event) {
+    event.preventDefault(); // Evita o comportamento padrão do formulário
+
+    const formData = new FormData(document.getElementById("loginForm")); // Captura os dados do formulário
+    const errorMessage = document.getElementById("errorMessage"); // Elemento para mensagens de erro
+
+    fetch("/login/processa_login.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        return response.json(); // Converte a resposta em JSON
+      })
+      .then((data) => {
+        if (data.success) {
+          // Oculta mensagens de erro
+          errorMessage.style.display = "none";
+
+          // Redireciona ao painel
+          window.location.href = "/painel.php";
+        } else {
+          // Exibe a mensagem de erro retornada pelo servidor
+          errorMessage.textContent = data.message || "Erro ao processar o login.";
+          errorMessage.style.display = "block";
+        }
+      })
+      .catch((error) => {
+        console.error("Erro no login:", error);
+        errorMessage.textContent =
+          "Erro ao processar o login. Verifique suas credenciais ou tente novamente mais tarde.";
+        errorMessage.style.display = "block";
+      });
+  }
+</script>
+
+
+</html>

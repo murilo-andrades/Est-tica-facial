@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Geral */
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Previne margens/larguras extras */
+}
+
+body,
+html {
+  background: #F1F1F1;
+  margin: 0;
+  overflow-x: hidden; /* Remove a rolagem horizontal */
+}
+
+/* Cabeçalho */
+.head {
+  margin: 0;
+  background-image: url("/src/img/salao.png");
+  width: 100%;
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os itens à esquerda */
+  justify-content: flex-end; /* Mantém o conteúdo alinhado ao final verticalmente */
+  padding: 20px;
+  gap: 10px;
+  position: relative;
+}
+
+
+.logo-salao {
+  max-height: 150px;
+  width: auto;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(255, 182, 193, 0.863);
+  margin-left: 20px;
+}
+
+
+.head a {
+  display: inline-block;
+  color: white;
+  background: #06d6a0;
+  border-radius: 4px;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.head h1 {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.head p {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.status {
+  margin-left: 20px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  text-decoration: none;
+}
+
+.status.open {
+  background-color: #06d6a0; /* Verde */
+}
+
+.status.closed {
+  background-color: #ff6b6b; /* Vermelho */
+}
+
+/* Barra de Ações */
+.actions {
+  display: flex;
+  flex-direction: row; /* Padrão: itens na horizontal */
+  justify-content: left; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  margin: 20px 40px;
+  gap: 20px;
+}
+
+.left-actions {
+  display: flex;
+  gap: 20px;
+}
+
+/* Ícones e textos das ações */
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #4a0d26; /* Cor do texto */
+  font-size: 14px;
+  gap: 5px;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #4a0d26; /* Cor do texto */
+  font-size: 14px;
+  gap: 5px;
+}
+
+.action-item i {
+  font-size: 20px; /* Tamanho do ícone */
+}
+
+/* Botão "Agendar Agora" */
+.actions .btn-primary {
+  background-color: #06d6a0;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+}
+
+/* Texto "Horários Disponíveis" */
+.horarios-disponiveis {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Seção de Serviços */
+.services-section {
+  background: white;
+  padding: 20px;
+  margin: 0 30px 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar h1 {
+  font-size: 16px;
+}
+
+.search-bar input {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Lista de Serviços */
+#services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.service-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.service-photo {
+  width: 80px;
+  height: 80px;
+  margin-right: 15px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-action {
+  margin-left: auto;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+.service-info {
+  max-width: 70%; /* Limita o tamanho para o botão não sobrepor */
+}
+
+.service-info h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.service-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.service-action .btn-agendar {
+  background-color: #06d6a0;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.service-action .btn-agendar:hover {
+  background-color: #05c592;
+}
+
+/* Mobile Responsivo */
+@media screen and (max-width: 768px) {
+  .service-item {
+    flex-direction: row; /* Mantém a foto à esquerda */
+    align-items: flex-start; /* Alinha os itens ao topo */
+    flex-wrap: wrap; /* Permite que o botão vá para uma nova linha */
+  }
+
+  .service-photo {
+    width: 30%; /* Foto ocupa 30% da largura */
+    max-width: 100px; /* Define um tamanho máximo */
+    height: auto; /* Ajusta a altura proporcional */
+    margin-right: 10px; /* Espaço entre a foto e os textos */
+  }
+
+  .service-info {
+    width: 70%; /* Informações ocupam o restante da largura */
+  }
+
+  .service-info h2 {
+    font-size: 16px; /* Tamanho reduzido do título */
+    margin-bottom: 5px;
+  }
+
+  .service-info p {
+    font-size: 14px; /* Tamanho reduzido para descrição */
+    margin-bottom: 8px;
+  }
+
+  .service-action {
+    width: 100%; /* Botão ocupa largura total */
+    margin-top: 10px; /* Espaço entre os textos e o botão */
+    display: flex;
+    justify-content: center; /* Centraliza o botão no meio */
+  }
+
+  .service-action .btn-agendar {
+    width: auto; /* Botão ocupa apenas o necessário */
+    text-align: center;
+    padding: 10px 20px; /* Espaço interno do botão */
+    font-size: 14px;
+    background-color: #06d6a0;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .service-action .btn-agendar:hover {
+    background-color: #05c592; /* Cor de hover */
+  }
+
+}

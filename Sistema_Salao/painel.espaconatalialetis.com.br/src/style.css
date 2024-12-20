@@ -1,0 +1,573 @@
+/* Geral */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f0f6; /* Fundo claro */
+  color: #333;
+}
+
+.admin-panel {
+  display: flex;
+  min-height: 100vh; /* Garante que a altura do painel ocupe toda a tela */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #522e38; /* Cor do menu lateral */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; /* Garante que a barra ocupe toda a altura da tela */
+  position: fixed; /* Fixa a barra na lateral */
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Adiciona rolagem, caso necessário */
+}
+
+.sidebar .logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+/* INICIO ESTILO PARA A NAV */
+
+/* Geral para o menu */
+nav {
+  background-color: #522e38; /* Cor de fundo */
+  width: 250px; /* Largura fixa */
+  height: 100vh; /* Altura total da tela */
+  padding: 20px 0;
+  overflow: hidden; /* Remove barra de rolagem lateral */
+}
+
+/* Lista de navegação */
+nav ul {
+  list-style: none; /* Remove os marcadores de lista */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* Estilo dos itens da lista */
+nav ul li {
+  width: 100%;
+}
+
+/* Links gerais */
+nav ul li a {
+  display: flex; /* Garante alinhamento horizontal entre ícone e texto */
+  align-items: center; /* Alinha verticalmente o ícone e o texto */
+  padding: 15px 20px;
+  text-decoration: none; /* Remove o sublinhado */
+  color: white;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+/* Estilo dos ícones */
+nav ul li a i {
+  margin-right: 10px; /* Espaço entre o ícone e o texto */
+  font-size: 18px; /* Tamanho do ícone */
+  vertical-align: middle; /* Alinha o ícone com o texto */
+}
+
+/* Hover e item ativo */
+nav ul li a:hover,
+nav ul li.active a {
+  background-color: #ff7aa2; /* Rosa para o item ativo */
+}
+
+/* Submenu */
+nav ul li.has-submenu ul.submenu {
+  padding-left: 20px; /* Indenta os itens do submenu */
+  list-style: none; /* Remove os marcadores de lista */
+}
+
+/* Links dos submenus */
+nav ul li.has-submenu ul.submenu li a {
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+/* Hover nos submenus */
+nav ul li.has-submenu ul.submenu li a:hover {
+  background-color: #ff7aa2; /* Cor de destaque no hover */
+}
+
+/* Títulos dos grupos */
+nav ul li.group-title {
+  padding: 15px 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #3a0920; /* Cor diferente para o título do grupo */
+  cursor: default; /* Não permite clicar */
+  text-transform: uppercase; /* Deixa os títulos em maiúsculas */
+  letter-spacing: 1px; /* Espaçamento entre letras */
+}
+
+/* Ícones nos títulos dos grupos */
+nav ul li.group-title i {
+  margin-right: 10px; /* Espaço entre o ícone e o texto */
+  font-size: 20px; /* Tamanho do ícone */
+  vertical-align: middle; /* Alinha o ícone com o texto */
+}
+
+/* Hover no link pai de submenus */
+nav ul li.has-submenu > a {
+  padding: 15px 20px; /* Adiciona espaçamento interno */
+  font-weight: bold; /* Destaca os títulos fixos */
+  color: white; /* Garante a cor adequada */
+  text-transform: uppercase; /* Opcional: transforma o texto em maiúsculas */
+}
+
+/* Hover no título pai do submenu */
+nav ul li.has-submenu > a:hover {
+  background-color: #ff7aa2; /* Cor de destaque no hover */
+}
+/* FIM ESTILO PARA A NAV */
+
+/* Conteúdo Principal */
+.main-content {
+  margin-left: 250px; /* Espaço para a sidebar fixa */
+  flex: 1;
+  padding: 0;
+  background-color: #f8f0f6; /* Cor de fundo do conteúdo principal */
+}
+
+/* INICIO TABELA PROFISSIONAL/SERVICO */
+.table-content {
+  display: flex; /* Ativa o flexbox */
+  flex-direction: column; /* Mantém os elementos empilhados */
+  align-items: center; /* Centraliza horizontalmente */
+}
+
+.table-profissional {
+  width: 80%; /* Define a largura da tabela */
+  border-collapse: collapse; /* Remove o espaçamento entre as bordas */
+  margin: 20px 0; /* Espaço ao redor da tabela */
+}
+
+.table-profissional th,
+.table-profissional td {
+  text-align: center; /* Centraliza o texto */
+  padding: 10px; /* Espaçamento interno */
+  border: 1px solid #ddd; /* Bordas para células */
+}
+
+.table-profissional th {
+  background-color: #522e38; /* Cor de fundo para o cabeçalho */
+  color: white; /* Cor do texto do cabeçalho */
+}
+
+.table-profissional tr:nth-child(even) {
+  background-color: #f2f2f2; /* Cor para linhas pares */
+}
+
+.profile-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.table-profissional button {
+  background: #ff7aa2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.td-btn {
+  display: flex; /* Torna os elementos internos flexíveis */
+  flex-direction: column; /* Coloca os elementos em uma coluna (um abaixo do outro) */
+  gap: 10px; /* Espaçamento vertical entre os botões */
+  justify-content: center; /* Centraliza os botões verticalmente */
+  align-items: center; /* Alinha os botões horizontalmente */
+}
+
+.table-profissional button:hover {
+  background: #522e38;
+}
+/* FIM TABELA PROFISSIONAL/SERVICO */
+
+/* Cabeçalho */
+.header {
+  background-color: #ff7aa2; /* Rosa do cabeçalho */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header span {
+  margin: 5px 30px;
+  font-size: 24px;
+  display: block;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Área de Conteúdo */
+.content {
+  padding: 20px;
+}
+
+.content h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Formulários (Página Profissional e Serviços) */
+.form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label,
+.form-group p {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.form-group select {
+  width: 99%;
+}
+.button-container {
+  text-align: center;
+}
+
+.button-container button {
+  background: #ff7aa2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button-container button:hover {
+  background: #522e38;
+}
+/* CSS PARA MODAL */
+/* Modal */
+/* Modal - Estilos básicos */
+.modal {
+  display: none; /* Esconde o modal por padrão */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro */
+  z-index: 1000;
+  display: flex; /* Alinhamento com Flexbox */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%; /* Limita a largura em telas menores */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative; /* Para alinhar o botão de fechar */
+  overflow-y: auto; /* Adiciona rolagem se o conteúdo for maior que a altura */
+  max-height: 90%; /* Limita a altura para não ultrapassar a tela */
+}
+
+/* Botão Fechar */
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.logo-container img {
+  border-radius: 5px;
+  max-width: 100px;
+  height: auto;
+  margin-top: 50px;
+}
+#td-btn {
+  display: flex; /* ou grid */
+  gap: 10px; /* Espaçamento entre os botões */
+  justify-content: center; /* Centraliza os itens no eixo principal */
+  align-items: center; /* Centraliza os itens no eixo cruzado */
+}
+
+/* Geral para dispositivos móveis */
+/* Geral para dispositivos móveis */
+/* Geral para dispositivos móveis */
+@media (max-width: 768px) {
+  /* Cabeçalho */
+  .header {
+    margin: 0;
+    padding: 10px 5px;
+  }
+
+  .header .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header span {
+    margin: 5px 25px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .admin-panel {
+    display: flex;
+    flex-direction: column; /* Empilha os elementos */
+    min-height: 100vh; /* Ocupa a altura da tela */
+    max-width: 100vw; /* Garante que não ultrapassa a largura da tela */
+    overflow-x: hidden; /* Remove barras horizontais */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo de largura */
+  }
+
+  /* Sidebar */
+  .sidebar {
+    display: flex;
+    position: fixed; /* Mantém o menu fixo */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Sobrepõe outros elementos */
+    width: 250px;
+    height: 100vh; /* Altura total da tela */
+    background-color: #522e38; /* Cor de fundo */
+    flex-direction: column; /* Organiza os itens verticalmente */
+    justify-content: flex-start; /* Começa do topo */
+    align-items: center;
+    overflow-y: auto; /* Permite rolagem quando necessário */
+    transition: transform 0.3s ease-in-out; /* Animação ao abrir/fechar */
+    transform: translateX(-100%); /* Esconde fora da tela */
+  }
+
+  /* Exibe o menu lateral quando ativo */
+  .sidebar.open {
+    transform: translateX(0); /* Move o menu para dentro da tela */
+  }
+
+  /* Barra no topo */
+  .sidebar-header {
+    background-color: #ff7aa2; /* Rosa claro */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Conteúdo da sidebar */
+  .sidebar nav ul {
+    list-style: none; /* Remove marcadores */
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Garante a largura total */
+    display: flex;
+    flex-direction: column; /* Empilha os itens */
+    align-items: flex-start; /* Alinha os itens à esquerda */
+  }
+
+  .sidebar nav ul li a i {
+    margin-right: 10px; /* Espaço entre ícone e texto */
+    font-size: 18px; /* Ajusta o tamanho do ícone */
+  }
+
+  .sidebar nav ul li a {
+    display: flex; /* Permite alinhar ícones e texto horizontalmente */
+    align-items: center; /* Centraliza ícones verticalmente */
+    padding: 10px 15px; /* Ajusta o espaçamento interno */
+    color: white;
+    text-decoration: none; /* Remove sublinhado */
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .sidebar nav ul li a:hover {
+    background-color: #ff7aa2; /* Destaque ao passar o mouse */
+  }
+
+  /* Barra no rodapé */
+  .sidebar-footer {
+    background-color: #ff7aa2; /* Rosa claro */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    position: sticky; /* Fixa no final da sidebar */
+    bottom: 0;
+    border-top: 1px solid #fff;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-footer button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .sidebar-footer button:hover {
+    text-decoration: underline;
+  }
+
+  /* Conteúdo Principal */
+  .main-content {
+    margin-left: 0; /* Remove espaço da sidebar */
+    padding: 15px; /* Espaçamento interno */
+  }
+
+  /* Botão de menu hamburguer */
+  .menu-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100; /* Acima do menu lateral */
+    background-color: #ff7aa2; /* Rosa claro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Animação do ícone no botão */
+  .menu-toggle i {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Gira o ícone ao abrir o menu */
+  .menu-toggle.open i {
+    transform: rotate(90deg);
+  }
+
+  /* Submenus em mobile */
+  nav ul li.has-submenu ul.submenu {
+    display: none; /* Esconde submenus inicialmente */
+  }
+
+  nav ul li.has-submenu.open ul.submenu {
+    display: block; /* Exibe submenus ao clicar */
+  }
+
+  nav ul li.has-submenu > a {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #444; /* Cor diferente para itens com submenu */
+    color: white;
+  }
+
+  nav ul li.has-submenu > a:hover {
+    background-color: #ff7aa2;
+  }
+
+  /* INICIO TABLE MOBILE */
+  .table-content {
+    margin-bottom: 15px; /* Espaço abaixo da tabela */
+  }
+
+  .table-scroll {
+    overflow-x: auto; /* Permite rolagem horizontal somente na tabela */
+    -webkit-overflow-scrolling: touch; /* Suaviza a rolagem no iOS */
+    max-width: 100%; /* Garante que o contêiner não ultrapasse a largura */
+    border: 1px solid #ddd; /* Adiciona borda para separação visual */
+  }
+
+  .table-profissional {
+    width: 100%; /* Ocupa toda a largura disponível */
+    min-width: 700px; /* Define uma largura mínima para evitar quebra */
+    border-collapse: collapse; /* Remove espaços entre as células */
+  }
+
+  .table-profissional th,
+  .table-profissional td {
+    padding: 8px;
+    font-size: 14px;
+    text-align: left;
+    word-wrap: break-word; /* Quebra o texto dentro das células */
+    white-space: normal; /* Permite quebra de linha no conteúdo */
+    border: 1px solid #ddd; /* Bordas das células */
+  }
+
+  .table-profissional th {
+    background-color: #522e38; /* Fundo do cabeçalho */
+    color: white; /* Cor do texto do cabeçalho */
+    position: sticky; /* Fixa o cabeçalho ao rolar */
+    top: 0;
+    z-index: 2;
+  }
+
+  .table-profissional tr:nth-child(even) {
+    background-color: #f9f9f9; /* Cor alternada para linhas pares */
+  }
+
+  .profile-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Fotos circulares */
+    object-fit: cover; /* Garante que a imagem não distorça */
+  }
+
+  .td-btn button {
+    font-size: 14px; /* Ajusta tamanho dos botões */
+    padding: 5px 10px;
+    margin: 5px 0;
+    width: 100%; /* Botões ocupam toda a largura da célula */
+  }
+  /* FIM TABLE MOBILE */
+}
